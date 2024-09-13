@@ -1,5 +1,7 @@
 import { start as startConsoleLog } from './consoleLog.js';
 import { startFBDB } from './firebaseDatabase.js';
+import { inspectTool } from './inspectTool.js';
+
 
 // Utility to bring a popup to the front
 function bringToFront(popup) {
@@ -174,8 +176,14 @@ export async function initializeToolbox() {
         button.onclick = action;
         body.appendChild(button);
     };
+		
+		
+		
+		
+addButton('Toggle Inspector', inspectTool);
 
     addButton('Console Log Tool', startConsoleLog);
+		
     addButton('Firebase Database', startFBDB);
 
     makePopupInteractive(popup, header);
