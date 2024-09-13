@@ -326,6 +326,6 @@ export function startFBDB() {
 }
 
 // Automatically run on document load if not imported as a module
-if (typeof document.currentScript === 'object') {
-    document.addEventListener('DOMContentLoaded', startFBDB);
-}
+// if (typeof document.currentScript === 'object') {
+//     document.addEventListener('DOMContentLoaded', startFBDB);
+// }
