@@ -1,3 +1,54 @@
+import { start as startConsoleLog } from './consoleLog.js';
+import { startFBDB } from './firebaseDatabase.js';
+
+// Utility to bring a popup to the front
+function bringToFront(popup) {
+    const highestZIndex = Math.max(
+        ...Array.from(document.querySelectorAll('div[style*="z-index"]')).map(
+            (el) => parseInt(el.style.zIndex) || 0
+        )
+    );
+    popup.style.zIndex = highestZIndex + 1;
+}
+
+// Base function to handle draggable popups
+function makePopupInteractive(popup, header) {
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    const startDrag = (e) => {
+        isDragging = true;
+        const touch = e.touches ? e.touches[0] : e;
+        offsetX = touch.clientX - popup.offsetLeft;
+        offsetY = touch.clientY - popup.offsetTop;
+        bringToFront(popup);
+    };
+
+    const doDrag = (e) => {
+        if (isDragging) {
+            const touch = e.touches ? e.touches[0] : e;
+            popup.style.left = `${touch.clientX - offsetX}px`;
+            popup.style.top = `${touch.clientY - offsetY}px`;
+        }
+    };
+
+    const stopDrag = () => {
+        isDragging = false;
+    };
+
+    header.addEventListener('touchstart', startDrag);
+    document.addEventListener('touchmove', doDrag);
+    document.addEventListener('touchend', stopDrag);
+
+    header.addEventListener('mousedown', startDrag);
+    document.addEventListener('mousemove', doDrag);
+    document.addEventListener('mouseup', stopDrag);
+
+    // Bring the popup to the front on any click
+    popup.addEventListener('mousedown', () => bringToFront(popup));
+}
+
+// Initialize the Toolbox
 export async function initializeToolbox() {
     // Check if the popup already exists
     if (document.getElementById('toolbox-popup')) {
@@ -131,3 +182,5 @@ export async function initializeToolbox() {
 
     document.body.appendChild(popup);
 }
+
+document.addEventListener('DOMContentLoaded', initializeToolbox);
