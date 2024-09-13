@@ -1,27 +1,44 @@
 export function inspectTool() {
-    // Utility to toggle the inspector on and off
+    // Utility to toggle the inspector on and off for all elements
     function toggleInspectorMode() {
         document.body.classList.toggle('inspector-active');
 
         if (document.body.classList.contains('inspector-active')) {
-            document.addEventListener('click', inspectElement);
+            applyInspectorToAllElements();
         } else {
-            document.removeEventListener('click', inspectElement);
+            revertInspectorForAllElements();
         }
     }
 
-    // Function to inspect and highlight elements
-    function inspectElement(event) {
-        const element = event.target;
+    // Function to apply inspector styles to all elements
+    function applyInspectorToAllElements() {
+        const elements = document.querySelectorAll('*');
 
-        if (element.classList.contains('inspector-highlighted')) {
+        elements.forEach(element => {
+            if (!element.classList.contains('inspector-highlighted')) {
+                applyInspectorStyles(element);
+            }
+        });
+
+        // Prevent clicks from triggering other actions
+        document.addEventListener('click', preventDefaultBehavior, true);
+    }
+
+    // Function to revert inspector styles for all elements
+    function revertInspectorForAllElements() {
+        const elements = document.querySelectorAll('.inspector-highlighted');
+
+        elements.forEach(element => {
             revertElementStyles(element);
-        } else {
-            applyInspectorStyles(element);
-        }
+        });
 
+        document.removeEventListener('click', preventDefaultBehavior, true);
+    }
+
+    // Prevent default click behavior during inspection
+    function preventDefaultBehavior(event) {
         event.preventDefault();
-        event.stopPropagation();  // Prevent other click events from triggering
+        event.stopPropagation();
     }
 
     // Store original styles and apply inspector styles
