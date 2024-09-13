@@ -25,6 +25,12 @@ function displayEntries(path = 'user') {
                 if (typeof data[id] === 'object') {
                     const exploreButton = document.createElement('button');
                     exploreButton.textContent = 'Explore';
+                    exploreButton.style.backgroundColor = '#007bff';
+                    exploreButton.style.color = '#fff';
+                    exploreButton.style.border = 'none';
+                    exploreButton.style.borderRadius = '4px';
+                    exploreButton.style.padding = '5px 10px';
+                    exploreButton.style.cursor = 'pointer';
                     exploreButton.onclick = () => {
                         navigationHistory.push(currentPath);
                         displayEntries(`${path}/${id}`);
@@ -33,6 +39,12 @@ function displayEntries(path = 'user') {
                 } else {
                     const deleteButton = document.createElement('button');
                     deleteButton.textContent = 'Delete';
+                    deleteButton.style.backgroundColor = '#dc3545';
+                    deleteButton.style.color = '#fff';
+                    deleteButton.style.border = 'none';
+                    deleteButton.style.borderRadius = '4px';
+                    deleteButton.style.padding = '5px 10px';
+                    deleteButton.style.cursor = 'pointer';
                     deleteButton.onclick = () => deleteEntry(path, id);
                     li.appendChild(deleteButton);
                 }
@@ -57,9 +69,7 @@ function deleteEntry(path, id) {
 // Function to update the navigation buttons' state
 function updateNavigationButtons() {
     const backButton = document.getElementById('backButton');
-
     backButton.disabled = currentPath === 'user';
-
     backButton.disabled = navigationHistory.length === 0;
 }
 
@@ -144,43 +154,39 @@ function createPopup() {
 
     const popupHeader = document.getElementById('popupHeader');
 
-    popupHeader.addEventListener('mousedown', (e) => {
+    const startDrag = (e) => {
         isDragging = true;
         startX = e.clientX - popup.offsetLeft;
         startY = e.clientY - popup.offsetTop;
         document.addEventListener('mousemove', moveAt);
-    });
+        document.addEventListener('touchmove', moveAtTouch);
+    };
 
-    document.addEventListener('mouseup', () => {
+    const stopDrag = () => {
         isDragging = false;
         document.removeEventListener('mousemove', moveAt);
-    });
-
-    popupHeader.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        startX = e.touches[0].clientX - popup.offsetLeft;
-        startY = e.touches[0].clientY - popup.offsetTop;
-        document.addEventListener('touchmove', moveAtTouch);
-    });
-
-    document.addEventListener('touchend', () => {
-        isDragging = false;
         document.removeEventListener('touchmove', moveAtTouch);
-    });
+    };
 
-    function moveAt(e) {
+    const moveAt = (e) => {
         if (isDragging) {
             popup.style.left = `${e.clientX - startX}px`;
             popup.style.top = `${e.clientY - startY}px`;
         }
-    }
+    };
 
-    function moveAtTouch(e) {
+    const moveAtTouch = (e) => {
         if (isDragging) {
             popup.style.left = `${e.touches[0].clientX - startX}px`;
             popup.style.top = `${e.touches[0].clientY - startY}px`;
         }
-    }
+    };
+
+    popupHeader.addEventListener('mousedown', startDrag);
+    document.addEventListener('mouseup', stopDrag);
+
+    popupHeader.addEventListener('touchstart', startDrag);
+    document.addEventListener('touchend', stopDrag);
 }
 
 // Function to inject CSS styles
@@ -193,11 +199,11 @@ function injectStyles() {
             left: 20%;
             width: 400px;
             height: 500px;
-            background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
+            background-color: #2c3e50;
+            border: 2px solid #34495e;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 100000000000;
             resize: both;
             overflow: auto;
         }
@@ -209,21 +215,25 @@ function injectStyles() {
             border-radius: 0;
         }
         #popupHeader {
-            background-color: #007bff;
-            color: white;
+            background-color: #34495e;
+            color: #ecf0f1;
             padding: 10px;
             cursor: move;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
         }
         #popupTitle {
             margin: 0;
+            font-weight: bold;
         }
         #popupBody {
-            padding: 10px;
+            padding: 15px;
+            background-color: #ecf0f1;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
         }
         #popupBody ul {
             list-style-type: none;
@@ -235,13 +245,13 @@ function injectStyles() {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            color: #2c3e50;
         }
         #popupBody ul li button {
-            margin-left: 10px;
             background-color: #dc3545;
             color: white;
             border: none;
-            padding: 5px;
+            padding: 5px 10px;
             cursor: pointer;
             border-radius: 4px;
         }
@@ -261,15 +271,18 @@ function injectStyles() {
             margin-bottom: 10px;
         }
         #entryForm input {
-            padding: 5px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
         }
         #entryForm button {
-            padding: 5px 10px;
+            padding: 10px;
             background-color: #28a745;
             color: white;
             border: none;
             cursor: pointer;
             border-radius: 4px;
+            font-size: 16px;
         }
         #entryForm button:hover {
             background-color: #218838;
@@ -280,7 +293,7 @@ function injectStyles() {
             margin-bottom: 10px;
         }
         #navigationButtons button {
-            padding: 5px 10px;
+            padding: 10px 15px;
             background-color: #6c757d;
             color: white;
             border: none;
@@ -302,9 +315,9 @@ function injectStyles() {
             color: white;
             padding: 10px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             cursor: pointer;
-            z-index: 999;
+            z-index: 100000000000;
         }
     `;
     document.head.appendChild(style);
@@ -316,5 +329,5 @@ export function startFBDB() {
     createPopup();
 }
 
-// Automatically run on document load
-document.addEventListener('DOMContentLoaded', startFBDB);
+
+  //  document.addEventListener('DOMContentLoaded', startFBDB);

@@ -1,4 +1,4 @@
-import { start as startConsoleLog } from './consoleLog.js'; // Adjust the path if necessary
+import { start as startConsoleLog } from './consoleLog.js';
 import { startFBDB } from './firebaseDatabase.js';
 
 export async function initializeToolbox() {
@@ -26,8 +26,8 @@ export async function initializeToolbox() {
     header.style.display = 'flex';
     header.style.justifyContent = 'space-between';
     header.style.alignItems = 'center';
-    header.style.borderTopLeftRadius = '8px';
-    header.style.borderTopRightRadius = '8px';
+    header.style.borderTopLeftRadius = '10px';
+    header.style.borderTopRightRadius = '10px';
 
     // Header title
     const title = document.createElement('span');
@@ -76,6 +76,19 @@ export async function initializeToolbox() {
     };
     header.appendChild(minimizeBtn);
 
+    // Close button
+    const closeButton = document.createElement('button');
+    closeButton.innerText = 'X';
+    closeButton.style.backgroundColor = 'transparent';
+    closeButton.style.border = 'none';
+    closeButton.style.color = '#e74c3c';
+    closeButton.style.fontSize = '16px';
+    closeButton.style.cursor = 'pointer';
+    closeButton.onclick = () => {
+        popup.remove();
+    };
+    header.appendChild(closeButton);
+
     popup.appendChild(header);
 
     // Create the body
@@ -85,8 +98,8 @@ export async function initializeToolbox() {
     body.style.flexDirection = 'column';
     body.style.gap = '10px';
     body.style.backgroundColor = '#ecf0f1';
-    body.style.borderBottomLeftRadius = '8px';
-    body.style.borderBottomRightRadius = '8px';
+    body.style.borderBottomLeftRadius = '10px';
+    body.style.borderBottomRightRadius = '10px';
     popup.appendChild(body);
 
     // Add buttons to run functions from other scripts

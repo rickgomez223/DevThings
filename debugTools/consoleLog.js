@@ -1,4 +1,3 @@
-// Define the start function
 export async function start() {
     // Create a container for the debug window
     const debugContainer = document.createElement('div');
@@ -8,61 +7,89 @@ export async function start() {
     debugContainer.style.right = '10px';
     debugContainer.style.width = '400px';
     debugContainer.style.height = '300px';
-    debugContainer.style.backgroundColor = '#d6d3ce'; // Windows XP background color
-    debugContainer.style.color = '#000';
+    debugContainer.style.backgroundColor = '#2c3e50'; // Dark background for macOS theme
+    debugContainer.style.color = '#ecf0f1';
     debugContainer.style.overflow = 'auto';
-    debugContainer.style.zIndex = '9999';
-    debugContainer.style.border = '2px solid #000'; // Windows XP border style
-    debugContainer.style.padding = '0';
-    debugContainer.style.fontFamily = 'Tahoma, sans-serif';
-    debugContainer.style.boxShadow = '0px 0px 5px rgba(0, 0, 0, 0.5)';
+    debugContainer.style.zIndex = '100000000000';
+    debugContainer.style.borderRadius = '10px';
+    debugContainer.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+    debugContainer.style.resize = 'both';
 
-    // Create a title bar to mimic Windows XP
+    // Create the title bar with macOS theme
     const titleBar = document.createElement('div');
-    titleBar.style.backgroundColor = '#003399';
-    titleBar.style.color = '#fff';
-    titleBar.style.padding = '5px';
+    titleBar.style.backgroundColor = '#34495e';
+    titleBar.style.color = '#ecf0f1';
+    titleBar.style.padding = '10px';
     titleBar.style.cursor = 'move';
     titleBar.style.display = 'flex';
     titleBar.style.justifyContent = 'space-between';
     titleBar.style.alignItems = 'center';
+    titleBar.style.borderTopLeftRadius = '10px';
+    titleBar.style.borderTopRightRadius = '10px';
 
+    // Title text
     const titleText = document.createElement('span');
     titleText.innerText = 'Debug Console';
+    titleText.style.fontWeight = 'bold';
+    titleBar.appendChild(titleText);
 
+    // Fullscreen button
+    const fullscreenBtn = document.createElement('button');
+    fullscreenBtn.innerText = '[\u2b1c]';
+    fullscreenBtn.style.backgroundColor = 'transparent';
+    fullscreenBtn.style.border = 'none';
+    fullscreenBtn.style.color = '#ecf0f1';
+    fullscreenBtn.style.fontSize = '16px';
+    fullscreenBtn.style.cursor = 'pointer';
+    fullscreenBtn.onclick = () => {
+        if (debugContainer.style.width === '100%') {
+            debugContainer.style.width = '400px';
+            debugContainer.style.height = '300px';
+            debugContainer.style.bottom = '10px';
+            debugContainer.style.right = '10px';
+        } else {
+            debugContainer.style.width = '100%';
+            debugContainer.style.height = '100%';
+            debugContainer.style.top = '0';
+            debugContainer.style.left = '0';
+            debugContainer.style.bottom = '0';
+            debugContainer.style.right = '0';
+        }
+    };
+    titleBar.appendChild(fullscreenBtn);
+
+    // Minimize button
+    const minimizeBtn = document.createElement('button');
+    minimizeBtn.innerText = '[ _ ]';
+    minimizeBtn.style.backgroundColor = 'transparent';
+    minimizeBtn.style.border = 'none';
+    minimizeBtn.style.color = '#ecf0f1';
+    minimizeBtn.style.fontSize = '16px';
+    minimizeBtn.style.cursor = 'pointer';
+    minimizeBtn.onclick = () => {
+        debugContainer.style.display = 'none';
+    };
+    titleBar.appendChild(minimizeBtn);
+
+    // Close button
     const closeButton = document.createElement('button');
     closeButton.innerText = 'X';
-    closeButton.style.backgroundColor = '#ff0000';
+    closeButton.style.backgroundColor = 'transparent';
     closeButton.style.border = 'none';
-    closeButton.style.color = '#fff';
+    closeButton.style.color = '#e74c3c';
+    closeButton.style.fontSize = '16px';
     closeButton.style.cursor = 'pointer';
-
-    closeButton.addEventListener('click', () => {
-        debugContainer.style.display = 'none';
-    });
-
-    titleBar.appendChild(titleText);
+    closeButton.onclick = () => {
+        debugContainer.remove();
+    };
     titleBar.appendChild(closeButton);
+
     debugContainer.appendChild(titleBar);
 
-    // Create tabs for console and inspector
-    const tabContainer = document.createElement('div');
-    const consoleTab = document.createElement('button');
-    const inspectorTab = document.createElement('button');
-    consoleTab.innerText = 'Console';
-    inspectorTab.innerText = 'Inspector';
-    consoleTab.style.marginRight = '10px';
-    consoleTab.style.cursor = 'pointer';
-    inspectorTab.style.cursor = 'pointer';
-
-    tabContainer.appendChild(consoleTab);
-    tabContainer.appendChild(inspectorTab);
-    debugContainer.appendChild(tabContainer);
-
-    // Create a content area
+    // Create a content area for console logs
     const contentArea = document.createElement('div');
     contentArea.id = 'debug-content';
-    contentArea.style.marginTop = '10px';
+    contentArea.style.padding = '10px';
     debugContainer.appendChild(contentArea);
 
     // Append the debug window to the body
@@ -73,78 +100,43 @@ export async function start() {
     console.log = function (...args) {
         const message = args.join(' ');
         const logEntry = document.createElement('div');
+        logEntry.style.padding = '5px 0';
+        logEntry.style.borderBottom = '1px solid #7f8c8d';
+        logEntry.style.wordWrap = 'break-word';
         logEntry.innerText = message;
         contentArea.appendChild(logEntry);
+        contentArea.scrollTop = contentArea.scrollHeight; // Auto-scroll to the bottom
         console._log.apply(console, args);
     };
-
-    // Add event listeners for tabs
-    consoleTab.addEventListener('click', () => {
-        contentArea.innerHTML = ''; // Clear content
-        console.log('Console Tab Clicked');
-    });
-
-    inspectorTab.addEventListener('click', () => {
-        contentArea.innerHTML = ''; // Clear content
-        const inspectorInfo = document.createElement('div');
-        inspectorInfo.innerText = 'Inspector Mode Activated';
-        contentArea.appendChild(inspectorInfo);
-        // Add your inspector logic here
-    });
 
     // Draggable functionality
     let isDragging = false;
     let offsetX, offsetY;
 
-    titleBar.addEventListener('mousedown', (e) => {
+    const startDrag = (e) => {
         isDragging = true;
-        offsetX = e.clientX - debugContainer.getBoundingClientRect().left;
-        offsetY = e.clientY - debugContainer.getBoundingClientRect().top;
-    });
+        const touch = e.touches ? e.touches[0] : e;
+        offsetX = touch.clientX - debugContainer.getBoundingClientRect().left;
+        offsetY = touch.clientY - debugContainer.getBoundingClientRect().top;
+    };
 
-    document.addEventListener('mousemove', (e) => {
+    const doDrag = (e) => {
         if (isDragging) {
-            debugContainer.style.left = `${e.clientX - offsetX}px`;
-            debugContainer.style.top = `${e.clientY - offsetY}px`;
+            const touch = e.touches ? e.touches[0] : e;
+            debugContainer.style.left = `${touch.clientX - offsetX}px`;
+            debugContainer.style.top = `${touch.clientY - offsetY}px`;
         }
-    });
+    };
 
-    document.addEventListener('mouseup', () => {
+    const stopDrag = () => {
         isDragging = false;
-    });
+    };
 
-    // Double-tap functionality to move the window to a corner
-    let lastTap = 0;
-    debugContainer.addEventListener('click', (e) => {
-        const currentTime = new Date().getTime();
-        const tapLength = currentTime - lastTap;
-        if (tapLength < 300 && tapLength > 0) {
-            // Move to a corner
-            if (debugContainer.style.left === '0px') {
-                debugContainer.style.left = '';
-                debugContainer.style.right = '0px';
-                debugContainer.style.top = '';
-                debugContainer.style.bottom = '0px';
-            } else if (debugContainer.style.right === '0px') {
-                debugContainer.style.right = '';
-                debugContainer.style.left = '0px';
-                debugContainer.style.top = '';
-                debugContainer.style.bottom = '0px';
-            } else if (debugContainer.style.bottom === '0px') {
-                debugContainer.style.bottom = '';
-                debugContainer.style.top = '0px';
-                debugContainer.style.left = '';
-                debugContainer.style.right = '0px';
-            } else if (debugContainer.style.top === '0px') {
-                debugContainer.style.top = '';
-                debugContainer.style.bottom = '0px';
-                debugContainer.style.right = '';
-                debugContainer.style.left = '0px';
-            } else {
-                debugContainer.style.bottom = '0px';
-                debugContainer.style.right = '0px';
-            }
-        }
-        lastTap = currentTime;
-    });
+    titleBar.addEventListener('mousedown', startDrag);
+    document.addEventListener('mousemove', doDrag);
+    document.addEventListener('mouseup', stopDrag);
+
+    titleBar.addEventListener('touchstart', startDrag);
+    document.addEventListener('touchmove', doDrag);
+    document.addEventListener('touchend', stopDrag);
 }
