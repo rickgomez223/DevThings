@@ -1,8 +1,55 @@
 import { start as startConsoleLog } from './consoleLog.js';
 import { startFBDB } from './firebaseDatabase.js';
 
+// Utility to bring a popup to the front
+function bringToFront(popup) {
+    const highestZIndex = Math.max(
+        ...Array.from(document.querySelectorAll('div[style*="z-index"]')).map(
+            (el) => parseInt(el.style.zIndex) || 0
+        )
+    );
+    popup.style.zIndex = highestZIndex + 1;
+}
+
+// Base function to handle draggable popups
+function makePopupInteractive(popup, header) {
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    const startDrag = (e) => {
+        isDragging = true;
+        const touch = e.touches ? e.touches[0] : e;
+        offsetX = touch.clientX - popup.offsetLeft;
+        offsetY = touch.clientY - popup.offsetTop;
+        bringToFront(popup);
+    };
+
+    const doDrag = (e) => {
+        if (isDragging) {
+            const touch = e.touches ? e.touches[0] : e;
+            popup.style.left = `${touch.clientX - offsetX}px`;
+            popup.style.top = `${touch.clientY - offsetY}px`;
+        }
+    };
+
+    const stopDrag = () => {
+        isDragging = false;
+    };
+
+    header.addEventListener('touchstart', startDrag);
+    document.addEventListener('touchmove', doDrag);
+    document.addEventListener('touchend', stopDrag);
+
+    header.addEventListener('mousedown', startDrag);
+    document.addEventListener('mousemove', doDrag);
+    document.addEventListener('mouseup', stopDrag);
+
+    // Bring the popup to the front on any click
+    popup.addEventListener('mousedown', () => bringToFront(popup));
+}
+
+// Initialize the Toolbox
 export async function initializeToolbox() {
-    // Create the popup window container
     const popup = document.createElement('div');
     popup.style.position = 'fixed';
     popup.style.top = '50px';
@@ -17,7 +64,6 @@ export async function initializeToolbox() {
     popup.style.resize = 'both';
     popup.style.overflow = 'hidden';
 
-    // Create the header
     const header = document.createElement('div');
     header.style.backgroundColor = '#34495e';
     header.style.color = '#ecf0f1';
@@ -29,13 +75,11 @@ export async function initializeToolbox() {
     header.style.borderTopLeftRadius = '10px';
     header.style.borderTopRightRadius = '10px';
 
-    // Header title
     const title = document.createElement('span');
     title.innerText = 'Toolbox';
     title.style.fontWeight = 'bold';
     header.appendChild(title);
 
-    // Fullscreen button
     const fullscreenBtn = document.createElement('button');
     fullscreenBtn.innerText = '[\u2b1c]';
     fullscreenBtn.style.marginLeft = 'auto';
@@ -59,7 +103,6 @@ export async function initializeToolbox() {
     };
     header.appendChild(fullscreenBtn);
 
-    // Minimize button
     const minimizeBtn = document.createElement('button');
     minimizeBtn.innerText = '[ _ ]';
     minimizeBtn.style.backgroundColor = 'transparent';
@@ -76,7 +119,6 @@ export async function initializeToolbox() {
     };
     header.appendChild(minimizeBtn);
 
-    // Close button
     const closeButton = document.createElement('button');
     closeButton.innerText = 'X';
     closeButton.style.backgroundColor = 'transparent';
@@ -91,7 +133,6 @@ export async function initializeToolbox() {
 
     popup.appendChild(header);
 
-    // Create the body
     const body = document.createElement('div');
     body.style.padding = '15px';
     body.style.display = 'flex';
@@ -102,7 +143,6 @@ export async function initializeToolbox() {
     body.style.borderBottomRightRadius = '10px';
     popup.appendChild(body);
 
-    // Add buttons to run functions from other scripts
     const addButton = (name, action) => {
         const button = document.createElement('button');
         button.innerText = name;
@@ -128,46 +168,12 @@ export async function initializeToolbox() {
         body.appendChild(button);
     };
 
-    // Add your buttons here
     addButton('Console Log Tool', startConsoleLog);
     addButton('Firebase Database', startFBDB);
 
-    // Make the window draggable
-    let isDragging = false;
-    let offsetX, offsetY;
+    makePopupInteractive(popup, header);
 
-    const startDrag = (e) => {
-        isDragging = true;
-        const touch = e.touches ? e.touches[0] : e;
-        offsetX = touch.clientX - popup.offsetLeft;
-        offsetY = touch.clientY - popup.offsetTop;
-    };
-
-    const doDrag = (e) => {
-        if (isDragging) {
-            const touch = e.touches ? e.touches[0] : e;
-            popup.style.left = `${touch.clientX - offsetX}px`;
-            popup.style.top = `${touch.clientY - offsetY}px`;
-        }
-    };
-
-    const stopDrag = () => {
-        isDragging = false;
-    };
-
-    // Attach touch events for dragging
-    header.addEventListener('touchstart', startDrag);
-    document.addEventListener('touchmove', doDrag);
-    document.addEventListener('touchend', stopDrag);
-
-    // Also attach mouse events for dragging
-    header.addEventListener('mousedown', startDrag);
-    document.addEventListener('mousemove', doDrag);
-    document.addEventListener('mouseup', stopDrag);
-
-    // Append the popup to the document
     document.body.appendChild(popup);
 }
 
-// Run the initialization function on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', initializeToolbox);

@@ -1,5 +1,51 @@
 import { database, databaseRef as ref, set, get, remove } from "../firebase/firebaseConfig.js";
 
+// Utility to bring a popup to the front
+function bringToFront(popup) {
+    const highestZIndex = Math.max(
+        ...Array.from(document.querySelectorAll('div[style*="z-index"]')).map(
+            (el) => parseInt(el.style.zIndex) || 0
+        )
+    );
+    popup.style.zIndex = highestZIndex + 1;
+}
+
+// Base function to handle draggable popups
+function makePopupInteractive(popup, header) {
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    const startDrag = (e) => {
+        isDragging = true;
+        const touch = e.touches ? e.touches[0] : e;
+        offsetX = touch.clientX - popup.offsetLeft;
+        offsetY = touch.clientY - popup.offsetTop;
+        bringToFront(popup);
+    };
+
+    const doDrag = (e) => {
+        if (isDragging) {
+            const touch = e.touches ? e.touches[0] : e;
+            popup.style.left = `${touch.clientX - offsetX}px`;
+            popup.style.top = `${touch.clientY - offsetY}px`;
+        }
+    };
+
+    const stopDrag = () => {
+        isDragging = false;
+    };
+
+    header.addEventListener('touchstart', startDrag);
+    document.addEventListener('touchmove', doDrag);
+    document.addEventListener('touchend', stopDrag);
+
+    header.addEventListener('mousedown', startDrag);
+    document.addEventListener('mousemove', doDrag);
+    document.addEventListener('mouseup', stopDrag);
+
+    popup.addEventListener('mousedown', () => bringToFront(popup));
+}
+
 let navigationHistory = [];
 let currentPath = 'user';
 
@@ -98,7 +144,6 @@ function createPopup() {
     `;
     document.body.appendChild(popup);
 
-    // Create minimized tab
     const minimizedTab = document.createElement('div');
     minimizedTab.id = 'minimizedTab';
     minimizedTab.textContent = 'Firebase CRUD App';
@@ -149,44 +194,8 @@ function createPopup() {
 
     displayEntries();
 
-    let isDragging = false;
-    let startX, startY;
-
-    const popupHeader = document.getElementById('popupHeader');
-
-    const startDrag = (e) => {
-        isDragging = true;
-        startX = e.clientX - popup.offsetLeft;
-        startY = e.clientY - popup.offsetTop;
-        document.addEventListener('mousemove', moveAt);
-        document.addEventListener('touchmove', moveAtTouch);
-    };
-
-    const stopDrag = () => {
-        isDragging = false;
-        document.removeEventListener('mousemove', moveAt);
-        document.removeEventListener('touchmove', moveAtTouch);
-    };
-
-    const moveAt = (e) => {
-        if (isDragging) {
-            popup.style.left = `${e.clientX - startX}px`;
-            popup.style.top = `${e.clientY - startY}px`;
-        }
-    };
-
-    const moveAtTouch = (e) => {
-        if (isDragging) {
-            popup.style.left = `${e.touches[0].clientX - startX}px`;
-            popup.style.top = `${e.touches[0].clientY - startY}px`;
-        }
-    };
-
-    popupHeader.addEventListener('mousedown', startDrag);
-    document.addEventListener('mouseup', stopDrag);
-
-    popupHeader.addEventListener('touchstart', startDrag);
-    document.addEventListener('touchend', stopDrag);
+    const header = document.getElementById('popupHeader');
+    makePopupInteractive(popup, header);
 }
 
 // Function to inject CSS styles
@@ -200,8 +209,8 @@ function injectStyles() {
             width: 400px;
             height: 500px;
             background-color: #2c3e50;
-            border: 2px solid #34495e;
             border-radius: 10px;
+            border: 2px solid #34495e;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             z-index: 100000000000;
             resize: both;
@@ -216,7 +225,7 @@ function injectStyles() {
         }
         #popupHeader {
             background-color: #34495e;
-            color: #ecf0f1;
+            color: white;
             padding: 10px;
             cursor: move;
             display: flex;
@@ -227,7 +236,6 @@ function injectStyles() {
         }
         #popupTitle {
             margin: 0;
-            font-weight: bold;
         }
         #popupBody {
             padding: 15px;
@@ -245,24 +253,13 @@ function injectStyles() {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: #2c3e50;
         }
         #popupBody ul li button {
-            background-color: #dc3545;
-            color: white;
+            margin-left: 10px;
             border: none;
-            padding: 5px 10px;
+            padding: 5px;
             cursor: pointer;
             border-radius: 4px;
-        }
-        #popupBody ul li button:hover {
-            background-color: #c82333;
-        }
-        #popupBody ul li button:first-of-type {
-            background-color: #007bff;
-        }
-        #popupBody ul li button:first-of-type:hover {
-            background-color: #0056b3;
         }
         #entryForm {
             display: flex;
@@ -323,11 +320,12 @@ function injectStyles() {
     document.head.appendChild(style);
 }
 
-// Export the initialization function
 export function startFBDB() {
     injectStyles();
     createPopup();
 }
 
-
-  //  document.addEventListener('DOMContentLoaded', startFBDB);
+// Automatically run on document load if not imported as a module
+if (typeof document.currentScript === 'object') {
+    document.addEventListener('DOMContentLoaded', startFBDB);
+}
