@@ -1,7 +1,7 @@
 // Import Firebase core and service-specific modules
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js';
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, createUserWithEmailAndPassword, updateProfile } from 'https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js';
-import { getDatabase, ref as databaseRef, set, onValue, get, remove } from 'https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js';
+import { getDatabase, ref as databaseRef, set, onValue, get, remove, update } from 'https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js';
 import { getStorage, ref as storageRef, uploadBytesResumable, getDownloadURL, listAll, deleteObject } from 'https://www.gstatic.com/firebasejs/10.13.0/firebase-storage.js';
 import { getAnalytics, logEvent } from 'https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js';
 import { getFirestore, doc, getDoc, setDoc } from 'https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js';
@@ -33,7 +33,7 @@ console.log('Firebase services initialized, Exporting Services');
 export {
   app,
   auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, updateProfile,
-  database, databaseRef, set, onValue, get, remove,
+  database, databaseRef, set, onValue, get, remove, update,
   storage, storageRef, uploadBytesResumable, getDownloadURL, listAll, deleteObject,
   analytics, logEvent,
   firestore, doc, getDoc, setDoc
