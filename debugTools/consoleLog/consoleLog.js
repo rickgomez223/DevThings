@@ -60,10 +60,10 @@ async function loadHTML(url) {
 
 export async function start() {
     // Load external CSS
-    loadCSS('consoleLog.css');
+    loadCSS('/consoleLog.css');
 
     // Load external HTML and append it to the body
-    const htmlContent = await loadHTML('consoleLog.html');
+    const htmlContent = await loadHTML('/consoleLog.html');
     const wrapper = document.createElement('div');
     wrapper.innerHTML = htmlContent;
     document.body.appendChild(wrapper);
