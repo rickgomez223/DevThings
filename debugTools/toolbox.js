@@ -1,4 +1,4 @@
-import { start as startConsoleLog } from './consoleLog.js';
+import { start as startConsoleLog } from './consoleLog/consoleLog.js';
 import { startFBDB } from './firebaseDatabase.js';
 import { inspectTool } from './inspectTool.js';
 
