@@ -1,4 +1,6 @@
 // Utility to bring a popup to the front
+// grab all elements and check z index 
+// increment by one 
 function bringToFront(popup) {
     const highestZIndex = Math.max(
         ...Array.from(document.querySelectorAll('div[style*="z-index"]')).map(
@@ -7,6 +9,9 @@ function bringToFront(popup) {
     );
     popup.style.zIndex = highestZIndex + 1;
 }
+
+
+
 
 // Base function to handle draggable popups
 function makePopupInteractive(popup, header) {
@@ -60,12 +65,14 @@ async function loadHTML(url) {
 
 export async function start() {
     // Load external CSS
-    loadCSS('/consoleLog.css');
+    loadCSS('https://rickgomez223.netlify.app/debugTools/consoleLog/consoleLog.css');
 
     // Load external HTML and append it to the body
-    const htmlContent = await loadHTML('/consoleLog.html');
+    const htmlContent = await loadHTML('https://rickgomez223.netlify.app/debugTools/consoleLog/consoleLog.html');
     const wrapper = document.createElement('div');
     wrapper.innerHTML = htmlContent;
+		wrapper.style.display = 'flex';
+		wrapper.style.position = 'sticky';
     document.body.appendChild(wrapper);
 
     const popup = document.getElementById('debug-popup');
