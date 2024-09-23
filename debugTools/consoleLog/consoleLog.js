@@ -71,8 +71,6 @@ export async function start() {
     const htmlContent = await loadHTML('https://rickgomez223.netlify.app/debugTools/consoleLog/consoleLog.html');
     const wrapper = document.createElement('div');
     wrapper.innerHTML = htmlContent;
-		wrapper.style.display = 'flex';
-		wrapper.style.position = 'sticky';
     document.body.appendChild(wrapper);
 
     const popup = document.getElementById('debug-popup');
