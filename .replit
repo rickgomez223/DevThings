@@ -1,0 +1,26 @@
+modules = ["web", "nodejs-20", "nodejs-22"]
+run = "run start"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "run start"]
+
+[[ports]]
+localPort = 5000
+externalPort = 3002
+exposeLocalhost = true
+
+[[ports]]
+localPort = 5001
+externalPort = 8008
+exposeLocalhost = true
+
+[[ports]]
+localPort = 8882
+externalPort = 3000
+
+[[ports]]
+localPort = 9005
+externalPort = 80
