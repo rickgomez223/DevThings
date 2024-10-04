@@ -11,11 +11,39 @@
         "firebase.json",
         "**/.*",
         "**/node_modules/**"
+      ],
+      "headers": [
+        {
+          "source": "**/*.js",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/javascript"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ]
+        },
+        {
+          "source": "**/*.html",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ]
+        }
       ]
     },
     {
-      "site": "rickgomez223",  // Add your second site name here
-      "public": "public",           // This points to the public directory
+      "site": "rickgomez223",
+      "public": "public",
       "ignore": [
         "firebase.json",
         "**/.*",
