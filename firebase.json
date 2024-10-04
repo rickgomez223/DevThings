@@ -43,7 +43,7 @@
     },
     {
       "site": "rickgomez223",
-      "public": "public",
+      "public": "Main",
       "ignore": [
         "firebase.json",
         "**/.*",
