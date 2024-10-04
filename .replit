@@ -1,4 +1,4 @@
-modules = ["web", "nodejs-20", "nodejs-22"]
+modules = ["web", "nodejs-20"]
 run = "run start"
 
 [nix]
@@ -24,3 +24,12 @@ externalPort = 3000
 [[ports]]
 localPort = 9005
 externalPort = 80
+
+[rules]
+
+[rules.formatter]
+
+[rules.formatter.fileExtensions]
+
+[rules.formatter.fileExtensions.".json"]
+id = "module:web/languageServer:typescript-language-server"
