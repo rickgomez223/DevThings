@@ -1,11 +1,42 @@
-# Set default headers for all files
-/* 
-  Access-Control-Allow-Origin: *
-  X-Frame-Options: DENY
-  Access-Control-Allow-Methods: GET, POST, OPTIONS
-  Access-Control-Allow-Headers: Origin, Content-Type, Accept
-  
+# Content Security Policy (CSP)
+# Allow only resources (JS, CSS, etc.) from your own CDN
+Content-Security-Policy: 
+  default-src 'self'; 
+  script-src 'self'; 
+  style-src 'self'; 
+  img-src 'self'; 
+  connect-src 'self'; 
+  object-src 'none'; 
+  frame-src 'none'; 
+  font-src 'self'; 
+  form-action 'none'; 
+  base-uri 'self'; 
+  upgrade-insecure-requests; 
+  block-all-mixed-content;
 
-# Set specific headers for JavaScript files
-/debugTools/*.js
-  
+# CORS Policy
+# Allow only requests from your website domain to access your CDN
+Access-Control-Allow-Origin: https://your-website.com
+Access-Control-Allow-Methods: GET
+Access-Control-Allow-Headers: Content-Type
+Access-Control-Max-Age: 86400
+
+# X-Frame-Options Header
+# Prevent embedding your resources in iframes
+X-Frame-Options: DENY
+
+# X-Content-Type-Options Header
+# Prevent MIME-sniffing to improve security
+X-Content-Type-Options: nosniff
+
+# Referrer Policy
+# Limit referrer info sent during navigation
+Referrer-Policy: no-referrer
+
+# HTTP Strict Transport Security (HSTS)
+# Enforce HTTPS-only access
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+# X-XSS-Protection Header
+# Block reflected XSS attacks
+X-XSS-Protection: 1; mode=block
