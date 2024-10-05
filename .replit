@@ -1,0 +1,35 @@
+modules = ["web", "nodejs-20"]
+run = 'git add . && git commit -m "run" && git push origin main && firebase deploy'
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "run start"]
+
+[[ports]]
+localPort = 5000
+externalPort = 3002
+exposeLocalhost = true
+
+[[ports]]
+localPort = 5001
+externalPort = 8008
+exposeLocalhost = true
+
+[[ports]]
+localPort = 8882
+externalPort = 3000
+
+[[ports]]
+localPort = 9005
+externalPort = 80
+
+[rules]
+
+[rules.formatter]
+
+[rules.formatter.fileExtensions]
+
+[rules.formatter.fileExtensions.".json"]
+id = "module:web/languageServer:typescript-language-server"
