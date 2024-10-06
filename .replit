@@ -1,6 +1,5 @@
 modules = ["web", "nodejs-20"]
-run = 'git add . && git commit -m "run" && git push origin main && firebase deploy'
-
+run = 'bash deploy.sh'
 [nix]
 channel = "stable-24_05"
 

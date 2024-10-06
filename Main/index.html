@@ -3,186 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newdex - The Next Generation of Decentralized Exchange</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <title>Super Chill Landing Page</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #2196F3;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .feature {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 10px 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            max-width: 600px;
-        }
-
-        .feature h2 {
-            margin-top: 0;
-            font-size: 1.5em;
-        }
-
-        .feature p {
-            line-height: 1.6;
-        }
-
-        .feature .demo {
-            margin-top: 10px;
-        }
-
-        .demo-container {
+            font-family: 'Helvetica Neue', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 20px;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars */
         }
 
-        .demo-container .code {
-            background-color: #eee;
-            padding: 10px;
-            border-radius: 4px;
-            font-family: monospace;
-            margin-right: 10px;
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
-        .demo-container .output {
-            background-color: #f2f2f2;
-            padding: 10px;
-            border-radius: 4px;
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #555;
         }
 
         .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #2196F3;
-            color: white;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
         .button:hover {
-            background-color: #1976D2;
+            background-color: #0069d9;
         }
 
-        .footer {
-            background-color: #333;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .footer p {
-            margin: 0;
+        .glass {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+            z-index: -1;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Newdex - The Future of Decentralized Finance</h1>
-    </header>
     <div class="container">
-        <div class="feature">
-            <h2>Fast & Secure Transactions</h2>
-            <p>Experience lightning-fast transaction speeds and industry-leading security with our cutting-edge blockchain technology.</p>
-            <div class="demo">
-                <div class="demo-container">
-                    <div class="code">
-                        <code>
-                            // Example code for a fast transaction...
-                        </code>
-                    </div>
-                    <div class="output">
-                        // Output of the code...
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="feature">
-            <h2>Intuitive User Interface</h2>
-            <p>Our user-friendly interface makes trading and managing your crypto assets a breeze, even for beginners.</p>
-            <div class="demo">
-                <div class="demo-container">
-                    <div class="code">
-                        <code>
-                            // Example code for an easy-to-use UI...
-                        </code>
-                    </div>
-                    <div class="output">
-                        // Output of the code...
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="feature">
-            <h2>Advanced Charting & Analysis</h2>
-            <p>Gain valuable insights into market trends with our advanced charting tools and real-time data analysis.</p>
-            <div class="demo">
-                <div class="demo-container">
-                    <div class="code">
-                        <code>
-                            // Example code for advanced charting...
-                        </code>
-                    </div>
-                    <div class="output">
-                        // Output of the code...
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a href="#" class="button animate__animated animate__fadeInUp">Explore Newdex Now</a>
+        <h1 class="title">Super Chill Landing Page</h1>
+        <p class="description">This is a super chill landing page. It's designed to be simple, elegant, and easy to use.</p>
+        <button class="button">Learn More</button>
     </div>
-    <footer class="footer">
-        <p>© 2023 Newdex. All rights reserved.</p>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script>
-        // Animate the features
-        anime({
-            targets: '.feature',
-            translateY: [20, 0],
-            opacity: [0, 1],
-            easing: 'easeInOutExpo',
-            delay: anime.stagger(100),
-            duration: 1000
-        });
-
-        // Animate the button
-        anime({
-            targets: '.button',
-            translateY: [20, 0],
-            opacity: [0, 1],
-            easing: 'easeInOutExpo',
-            delay: 1500,
-            duration: 1000
-        });
-    </script>
+    <div class="glass"></div>
 </body>
 </html>
