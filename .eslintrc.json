@@ -1,0 +1,16 @@
+{
+  "env": {
+    "browser": true,
+    "es2024": true  // Set environment to support ECMAScript 2024
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 2024,  // Set parser options to ECMAScript 2024
+    "sourceType": "module"  // Use ES modules
+  },
+  "rules": {
+    "quotes": ["error", "double"],  // Enforce double quotes
+    "semi": ["error", "always"]  // Require semicolons
+    // Add any additional rules here as needed
+  }
+}

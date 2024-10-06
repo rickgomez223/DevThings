@@ -4,7 +4,7 @@
 git add .
 
 # Commit with a default message
-git commit -m "run"
+git commit -m "default Message"
 
 # Push to the main branch
 git push origin main
