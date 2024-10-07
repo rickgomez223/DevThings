@@ -1,94 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>iOS Web App</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Your App Name">
-  <link rel="apple-touch-icon" href="your-app-icon.png">
-  <link rel="apple-touch-startup-image" href="your-splash-screen.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)">
-  <link rel="apple-touch-startup-image" href="your-splash-screen@2x.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)">
-  <link rel="apple-touch-startup-image" href="your-splash-screen@3x.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 3)">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-    }
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="DevThings">
+    <link rel="apple-touch-icon" href="your-app-icon.png">
+    <link rel="apple-touch-startup-image" href="your-splash-screen.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)">
+		
 
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 100;
-    }
+    <script src="https://kit.fontawesome.com/c5373296dd.js" crossorigin="anonymous"></script>
+	
+		 <style>
+        /* Apply box-sizing globally */
+        * {
+            box-sizing: border-box; /* Applies to all elements */
+        }
 
-    .fab {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 100;
-    }
+        html {
+            overflow: auto;
+        }
 
-    .footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #f5f5f5;
-      padding: 10px;
-      text-align: center;
-    }
+        body {
+            height: auto;
+            width: 100%;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-    .pagination {
-      margin: 20px 0;
-    }
-  </style>
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white; /* Ensure visibility */
+            transition: background-color 0.3s ease; /* Smooth background transition */
+            border-bottom: 0.5px solid #999;
+            padding: 10px 0; /* Default padding */
+            z-index: 1000; /* Keep navbar above other content */
+        }
+
+        .navbarLargeMenu {
+            display: flex; /* Ensure the large logo is centered */
+            justify-content: center; 
+            align-items: center;
+        }
+
+        .navbarLargeLogo {
+            height: 70%; /* Fixed size for the large logo */
+            width: 100%;
+            transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Delay visibility change until after fade-out */
+            
+        }
+
+        .navbarShortMenu {
+					display: none; 
+            
+            
+            
+            transition: opacity 0.3s ease, visibility 0s linear 0s; /* Change visibility immediately */
+        }
+
+        .navbarShortLogo {
+            height: 35px; /* Size for the small logo */
+            padding-right: 10px;
+        }
+
+        main {
+					
+            height: auto;
+            width: 100%;
+            text-align: start;
+            padding: 20px; /* Add some padding for better text visibility */
+            padding-top: 200px;
+            padding-bottom: 60px;
+        }
+
+        .fab {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f5f5f5;
+            padding: 10px;
+            
+						display: flex;
+        }
+
+				
+    </style>
 </head>
 <body>
-  <nav class="navbar navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="#">Your App Name</a>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbarLargeMenu">
+                <img class="navbarLargeLogo" src="src/icons/logo1/cover.png" alt="Large Logo" />
+            </div>
+            <div class="navbarShortMenu">
+               
+							<a href="#">  <img class="navbarShortLogo" src="src/icons/logo1/vector/monoBlack.svg" alt="Small Logo" href="#" /></a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="row">
+            <div class="col">
+	             <div class="page">
+								 
+								 <h1>Welcome</h1>
+			         
+			             <div class="supplimemtText">
+										 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+			                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+			                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+			                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+										</div>
+						 	</div>
+            </div>
+        </div>
+ 
+  
+    <div class="footer">
+        <p>&copy; 2023 DevThings</p>
+				  <button class="fab">
+        <i class="fa-solid fa-hand"></i>
+				Say Hello
+    </button>
+
     </div>
-  </nav>
+   </main>
 
-  <main class="container mt-5">
-    <!-- Your content goes here -->
-    <div class="row">
-      <div class="col-md-12">
-        <h1>Welcome to Your App</h1>
-        <p>This is a sample iOS-style web app.</p>
-      </div>
-    </div>
-  </main>
-
-  <button class="fab btn btn-primary btn-circle btn-lg">
-    <i class="fas fa-plus"></i>
-  </button>
-
-  <footer class="footer">
-    <p>&copy; 2023 DevThings</p>
-  </footer>
-<!-- 
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </nav>
- -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        window.onscroll = function() {
+            let navbar = document.querySelector('.navbar');
+						let navbarLargeMenu = document.querySelector('.navbarLargeMenu');
+						let navbarShortMenu = document.querySelector('.navbarShortMenu');
+            if (window.scrollY > 110) { // Change this value for trigger point
+                navbar.classList.add('shrink');
+								navbar.style.position = 'fixed';
+								navbarLargeMenu.style.display = 'none';
+								navbarShortMenu.style.display = 'flex';
+            } else {
+                navbar.classList.remove('shrink');
+								navbar.style.position = 'absolute';
+								navbarLargeMenu.style.display = 'flex';
+								navbarShortMenu.style.display = 'none';
+            }
+        };
+    </script>
 </body>
 </html>
