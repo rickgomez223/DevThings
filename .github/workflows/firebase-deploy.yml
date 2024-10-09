@@ -20,7 +20,7 @@ jobs:
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
-      - name: Deploy to Firebase
+      - name: List Fire Base Projects
         env:
           FIREBASE_TOKEN: ${{ secrets.Firebase_Token }}
-        run: firebase deploy --project rickgomez223
+        run: firebase projects:list
