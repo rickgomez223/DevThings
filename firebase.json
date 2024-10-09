@@ -49,6 +49,15 @@
         "**/.*",
         "**/node_modules/**"
       ]
+    },
+    {
+      "site": "franks-web-apps",
+      "public": "FWA",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
     }
   ],
   "storage": {
