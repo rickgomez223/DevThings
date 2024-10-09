@@ -22,9 +22,9 @@ jobs:
 
       - name: Authenticate with Firebase
         env:
-          FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
-          echo $FIREBASE_SERVICE_ACCOUNT_KEY > "${HOME}/firebase_key.json"
+          echo $FIREBASE_SERVICE_ACCOUNT > "${HOME}/firebase_key.json"
           firebase auth:login --token "$(firebase functions:config:get | jq -r .token)"
           
       - name: Deploy to Firebase
