@@ -1,5 +1,3 @@
-
-
 async function loadFirebase() {
   try {
     // Try loading from the first source
