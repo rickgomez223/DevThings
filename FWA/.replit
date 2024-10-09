@@ -1,0 +1,20 @@
+modules = ["web", "python-3.9", "nodejs-22", "nix"]
+run = "npm run start"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "npm run "]
+
+[[ports]]
+localPort = 3000
+externalPort = 80
+
+[[ports]]
+localPort = 3001
+externalPort = 3001
+
+[[ports]]
+localPort = 9005
+externalPort = 3000

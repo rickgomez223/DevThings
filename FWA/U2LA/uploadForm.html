@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" id="themeStylesheet" href="./styles/app.css"> <!-- Default theme -->
+
+    <link rel="apple-touch-startup-image" href="./icons/upload-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Upload 2 Library">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="./manifest.json">
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="192x192" href="./icons/upload-192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="./icons/upload-512.png">
+
+
+    <title>Record and Upload</title>
+
+    <script type="module">
+        // Apply the saved theme on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('selectedTheme');
+            if (savedTheme) {
+                document.getElementById('themeStylesheet').setAttribute('href', savedTheme);
+            }
+        });
+    </script>
+
+    
+    <script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js"></script>
+    <script type="module" src="./scripts/uploadForm.js"></script>
+    <script src="scripts/firebaseInitialize.js" type="module"></script>
+</head>
+<body>
+    <button id="navigateBackButton" onclick="window.location.href='./displayStorage.html'">Go to Library</button>
+
+    <div id="mainContent">
+        <h1>Record and Upload</h1>
+        <form id="audioForm">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" placeholder="Enter Title" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" placeholder="Enter Subject" required>
+            </div>
+            <div class="form-group">
+                <button type="button" id="toggleButton">Record</button>
+            </div>
+            <div id="audioContainer" class="audio-container">
+                <!-- Display recorded audio here -->
+            </div>
+            <input type="hidden" id="audioInput">
+            <button type="submit" id="submitButton">Submit</button>
+        </form>
+    </div>
+
+    <div id="loadingSpinner" class="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+    <div id="errorPopup" class="errorPopup">An error occurred</div>
+    <div id="successPopup" class="successPopup">Form submitted successfully!</div>
+</body>
+</html>

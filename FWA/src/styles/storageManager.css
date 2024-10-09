@@ -1,0 +1,295 @@
+
+/* General Wrapper and Layout */
+.smWrapper {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: auto;
+		display: flex;
+		flex-direction: column;
+		
+}
+
+.smW-Header {
+    padding: 20px;
+    text-align: center;
+}
+
+.smW-Header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+/* Toggle Buttons */
+.storageMenu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    font-size: 17px;
+    border-bottom: 1px solid #ccc;
+    height: 45px;
+}
+
+.storageMenu-item button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.storageMenu-item button:focus {
+    outline: none;
+}
+
+.storageMenu-item i {
+    margin-left: 10px;
+    font-size: 20px;
+    color: #c7c7cc;
+}
+
+/* Main Page Content */
+.sm-Page {
+		width: 100%;
+		
+    padding: 0;
+		margin: 0 auto;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		overflow: auto;
+}
+
+.sm-Page h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #343a40;
+}
+
+.sm-Page hr {
+    border: none;
+    height: 1px;
+    background-color: blue;
+    margin: 10px 0;
+}
+
+
+.sm-soundsPage, .sm-imagesPage {
+		width: 100%;
+		display: none;
+		justify-content: center;
+		align-items: center;
+		margin: 0 auto;
+		padding: 0;
+		flex-direction: column;
+		overflow: auto;
+}
+/* Selected Count Display */
+#selectedCountPhotos,
+#selectedCountSounds {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #343a40;
+}
+
+/* Photo Grid Layout */
+/* Photo Grid Layout */
+.sm-photoGrid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 1fr is a cleaner way to define equal-width columns */
+    gap: 10px;
+    margin: 0 auto;
+    padding: 0; /* Remove auto; padding does not support auto */
+    justify-content: center;
+    
+}
+
+/* Thumbnail Styles */
+.thumbnail {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3; /* Example aspect ratio; adjust as needed */
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.thumbnail:hover {
+    border-color: #007bff;
+    transform: scale(1.05);
+}
+
+.thumbnail.selected {
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #343a40;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+/* Form Buttons */
+.form-group button {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.form-group button:hover {
+    background-color: #0056b3;
+}
+
+/* Delete Button */
+#deleteButtonPhotos,
+#deleteButtonSounds {
+    background-color: #dc3545;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#deleteButtonPhotos:disabled,
+#deleteButtonSounds:disabled {
+    background-color: #bbbbbb;
+    cursor: not-allowed;
+}
+
+#deleteButtonPhotos:hover:not(:disabled),
+#deleteButtonSounds:hover:not(:disabled) {
+    background-color: #c82333;
+}
+
+
+
+/* Sound Grid Layout */
+.sm-soundGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Folder Display */
+.folder-item {
+    font-weight: bold;
+    cursor: pointer;
+    color: #007bff;
+    transition: color 0.3s ease;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    margin-bottom: 10px;
+}
+
+.folder-item:hover {
+    color: #0056b3;
+    background-color: #f0f8ff;
+}
+/* Sub-grid for folders */
+.sub-grid {
+		width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+ 		margin: auto;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    
+}
+
+/* Sound Item */
+.sound-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sound-item audio {
+    
+    flex-shrink: 0;
+}
+
+.sound-item span {
+    flex-grow: 1;
+    font-size: 16px;
+    color: #343a40;
+}
+
+.sound-item:hover {
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sound-item.selected {
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+
+.iPageContent {
+		width: 100%;
+		margin: auto;
+		padding: 0;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		overflow: auto;
+}

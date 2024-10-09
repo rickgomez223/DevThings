@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		
+		 <link rel="apple-touch-startup-image" href="icons/upload.svg">
+	 
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Upload 2 Library">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="icons/upload.svg">
+    <link rel="apple-touch-icon" sizes="60x60" href="icons/upload.svg">
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/upload.svg">
+    <link rel="apple-touch-icon" sizes="76x76" href="icons/upload.svg">
+    <link rel="apple-touch-icon" sizes="114x114" href="/icons/upload.svg">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icons/upload.svg">
+    <link rel="apple-touch-icon" sizes="144x144" href="/icons/upload.svg">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/upload.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/upload.svg">
+
+    <title>Uploaded Files</title>
+    <link id="themeStylesheet" rel="stylesheet" href="styles/app.css">
+    
+        <script type="module">
+            // Apply the saved theme on page load
+            document.addEventListener('DOMContentLoaded', () => {
+                const savedTheme = localStorage.getItem('selectedTheme');
+                if (savedTheme) {
+                    document.getElementById('themeStylesheet').setAttribute('href', savedTheme);
+                }
+            });
+        </script>
+		
+		 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js"></script>
+</head>
+<body>
+
+    <button id="navigateBackButton" onclick="window.location.href='uploadForm.html'">Record and Upload</button>
+
+    <div id="mainContent">
+        <h1>Uploaded Files</h1>
+        <div id="fileList" class="loading">Loading Files...</div>
+        <button id="deleteButton">Delete Selected</button>
+    </div>
+
+    <div id="fileDetails" class="file-details">
+        <button class="close-details">✖</button>
+        <h2 id="fileTitle"></h2>
+        <p id="fileDescription"></p>
+        <div id="fileContent"></div>
+    </div>
+
+    <script type="module" src="scripts/firebaseInitialize.js"></script>
+    
+    <script type="module" src="scripts/displayStorage.js"></script>
+</body>
+</html>

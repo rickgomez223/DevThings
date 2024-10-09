@@ -1,0 +1,145 @@
+<div class="pageContainer">
+    <!-- Header section for the Settings page -->
+    <header class="pageHeader">
+        <h2>Settings</h2>
+    </header>
+
+    <!-- Main content area of the Settings page -->
+    <main class="pageBody">
+        <!-- Navigation section within Settings, includes a back button -->
+        <div class="settingsNav" id="settingsNav">
+            <!-- Back button for navigating to the previous screen -->
+            <!-- ID: backBtn -->
+            <div class="backBtn" id="backBtn">
+                <div class="actionButtons settings-item">
+                    <span class="icon"><i class="fas fa-chevron-left"></i></span>
+                    <!-- Button to show the settings home screen -->
+                    <!-- ID: showSettingsHome -->
+                    <button id="showSettingsHome">Back</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Router container where different settings screens will be loaded -->
+        <!-- ID: settingsRouter -->
+        <div id="settingsRouter" class="settingsRouter"></div>
+
+        <!-- Wrapper for settings options and application status -->
+        <!-- ID: settingsWrapper -->
+        <div id="settingsWrapper">
+            <!-- Settings panel with various options -->
+            <div class="settingsPanel">
+                <div class="actionButtons settings-item">
+                    <!-- Button to access the Storage Manager -->
+                    <!-- ID: showStorageManagerBtn -->
+                    <button id="showStorageManagerBtn">Storage Manager</button>
+                    <span class="icon"><i class="fas fa-chevron-right"></i></span>
+                </div>
+                <div class="actionButtons settings-item">
+                    <!-- Button to change the playlist -->
+                    <!-- ID: changePlaylistBtn -->
+                    <button id="changePlaylistBtn">Change Playlist</button>
+                    <span class="icon"><i class="fas fa-chevron-right"></i></span>
+                </div>
+                <!-- Additional Settings Items can be added here -->
+            </div>
+
+            <!-- Application status section showing Firebase and YouTube status -->
+            <div class="appStatus">
+                <!-- Firebase connection and storage status -->
+                <div class="firebaseInfo">
+                    <h3>Firebase</h3>
+
+                    <div class="status-item">
+                        <p>Database Status:</p>
+                        <!-- ID: FbConnectionStatus, FbConnectionStatusText -->
+                        <span id="FbConnectionStatus"><i id="FbConnectionStatusText"></i></span>
+                    </div>
+
+                    <div class="status-item">
+                        <p>Storage Status:</p>
+                        <!-- ID: FbStorageStatus, FbStorageStatusText -->
+                        <span id="FbStorageStatus"><i id="FbStorageStatusText"></i></span>
+                    </div>
+                </div>
+
+                <!-- YouTube connection and playlist status -->
+                <div class="youtubeInfo">
+                    <br />
+                    <h3>YouTube</h3>
+                    <div class="status-item">
+                        <p>Connection Status:</p>
+                        <!-- ID: ytConnectionStatus, ytConnectionStatusText -->
+                        <span id="ytConnectionStatus"><i id="ytConnectionStatusText"></i></span>
+                    </div>
+
+                    <div class="status-item">
+                        <p>Playlist:</p>
+                        <!-- ID: ytPlaylistStatus, ytPlaylistStatusText -->
+                        <span id="ytPlaylistStatus"><i id="ytPlaylistStatusText"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+    </main>
+
+    <!-- Footer section of the Settings page -->
+    <footer class="pagefooter" id="pageFooter">
+        <div class="appDetailsCont">
+            <div class="actionButtons footer-item">
+                <!-- Button to display attributes -->
+                <!-- ID: attributesBtn -->
+                <button class="attributesBtn" id="attributesBtn">Attributes</button>
+                <span class="icon"><i class="fas fa-chevron-right"></i></span>
+            </div>
+ <!-- Attributes section displaying creator and technology used -->
+        <!-- ID: attr -->
+        <div class="attributes" id="attr">
+            <div class="me">
+                <p>Made By:</p>
+                <h3><i>Kyle</i></h3>
+            </div>
+
+            <div class="attr">
+                <p>Powered By:</p>
+                <ul>
+                    <li><i class="fab fa-markdown"></i> Textastic</li>
+                    <li><i class="fab fa-node"></i> Replit</li>
+                    <li><i class="fab fa-github"></i> GitHub</li>
+                    <li><i class="fab fa-neos"></i> Netlify</li>
+                    <li><i class="fas fa-fire"></i> Firebase</li>
+                    <li><i class="fas fa-font"></i> Font Awesome</li>
+                    <li><i class="fas fa-robot"></i> ChatGPT</li>
+                </ul>
+            </div>
+        </div>
+				
+            <div class="actionButtons footer-item">
+                <!-- Button to navigate to the Upload App -->
+                <!-- ID: u2laBTN -->
+                <button class="u2laBTN" id="u2laBTN">Goto Upload App</button>
+                <span class="icon"><i class="fas fa-chevron-right"></i></span>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- Scripts for handling the settings page functionality, loaded as modules -->
+<script src="src/scripts/pages/settings.js" type="module" defer></script>
+<script src="./src/scripts/pages/settings.js" type="module" defer></script>
+<script src="../src/scripts/pages/settings.js" type="module" defer></script>
+<script src="../../src/scripts/pages/settings.js" type="module" defer></script>
+<script src="../../../src/scripts/pages/settings.js" type="module" defer></script>
+<script src="../../../../src/scripts/pages/settings.js" type="module" defer></script>
+
+
+<link rel="stylesheet" href="src/styles/settings.css" defer/>
+<link rel="stylesheet" href="./src/styles/settings.css" defer/>
+<link rel="stylesheet" href="../src/styles/settings.css" defer/>
+<link rel="stylesheet" href="../../src/styles/settings.css" defer/>
+<link rel="stylesheet" href="../../../src/styles/settings.css" defer/>
+<link rel="stylesheet" href="../../../../src/styles/settings.css" defer/>
+
+

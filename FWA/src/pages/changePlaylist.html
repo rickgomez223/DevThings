@@ -1,0 +1,54 @@
+<div id="playlistManager">
+    <!-- Heading for the Playlist Manager -->
+    <h2>Manage Your Playlists</h2>
+
+    <!-- Section for changing or adding a playlist -->
+    <div id="playlistChange">
+        <!-- Label for the playlist URL input field -->
+        <label for="playlistIdInput">Enter YouTube Playlist URL:</label>
+        <!-- Input field for entering a YouTube Playlist URL -->
+        <!-- ID: playlistIdInput -->
+        <input type="text" id="playlistIdInput" placeholder="Enter new Playlist URL" />
+        <!-- Input field for entering a name for the playlist -->
+        <!-- ID: playlistNameInput -->
+        <input type="text" id="playlistNameInput" placeholder="Enter Playlist Name" />
+        <!-- Button to save the playlist -->
+        <!-- ID: savePlaylistButton -->
+        <button id="savePlaylistButton">Save Playlist</button>
+    </div>
+
+    <!-- Section displaying stored playlists -->
+    <div id="storedPlaylists">
+        <!-- Heading for the stored playlists -->
+        <h3>Your Playlists</h3>
+        <!-- Unordered list to display the playlists -->
+        <!-- ID: playlistList -->
+        <ul id="playlistList"></ul>
+    </div>
+
+    <!-- Section displaying the currently selected playlist -->
+    <div id="currentPlaylist">
+        <!-- Heading for the currently selected playlist -->
+        <h3>Currently Selected Playlist</h3>
+        <!-- Paragraph displaying the current playlist text -->
+        <!-- ID: currentPlaylistText -->
+        <p id="currentPlaylistText">No playlist selected</p>
+    </div>
+</div>
+
+<!-- Script for handling playlist changes, loaded as a module -->
+<!-- Scripts for handling the change playlist page functionality, loaded as modules -->
+<script src="src/scripts/pages/changePlaylist.js" type="module" defer></script>
+<script src="./src/scripts/pages/changePlaylist.js" type="module" defer></script>
+<script src="../src/scripts/pages/changePlaylist.js" type="module" defer></script>
+<script src="../../src/scripts/pages/changePlaylist.js" type="module" defer></script>
+<script src="../../../src/scripts/pages/changePlaylist.js" type="module" defer></script>
+<script src="../../../../src/scripts/pages/changePlaylist.js" type="module" defer></script>
+
+<!-- Stylesheets for change playlist page -->
+<link rel="stylesheet" href="src/styles/changePlaylist.css" defer />
+<link rel="stylesheet" href="./src/styles/changePlaylist.css" defer />
+<link rel="stylesheet" href="../src/styles/changePlaylist.css" defer />
+<link rel="stylesheet" href="../../src/styles/changePlaylist.css" defer />
+<link rel="stylesheet" href="../../../src/styles/changePlaylist.css" defer />
+<link rel="stylesheet" href="../../../../src/styles/changePlaylist.css" defer />

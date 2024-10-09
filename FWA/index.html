@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Charset for encoding the document -->
+    <meta charset="UTF-8" />
+
+    <!-- Page Title -->
+    <title>Home</title>
+
+    <!-- Viewport settings for mobile responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <!-- Enable web app capabilities on Apple devices -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- Status bar style for Apple devices -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- FontAwesome CSS for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Apple touch icon -->
+    <link rel="apple-touch-icon" href="src/icons/icon.png" />
+
+    <!-- Mobile web app title for Apple devices -->
+    <meta name="apple-mobile-web-app-title" content="Frank Web Apps" />
+
+    <!-- Theme color for the browser's address bar -->
+    <meta name="theme-color" content="#007aff" />
+
+    <!-- Manifest file for Progressive Web App (PWA) settings -->
+    <link rel="manifest" href="src/manifest.json" />
+
+    <!-- Main stylesheet for the application -->
+    <link rel="stylesheet" href="src/styles/index.css" />
+</head>
+
+<body>
+    <!-- Loading screen for the entire app while checking for internet -->
+    <section id="appLoad" class="loading appLoad">
+        <!-- ID: loadingText -->
+        <p id="loadingText">loading app...</p>
+        <!-- ID: noWebText -->
+        <p id="noWebText">you have no internet connection</p>
+        <!-- ID: elseText -->
+        <p id="elseText">error</p>
+    </section>
+
+    <!-- Landing section for the login form -->
+    <section id="Landing" class="Landing">
+    <div class="login-register" id="login-register">
+			<div id="error-message" style="display: none; color: red;"></div>
+        
+
+        <!-- Login Form -->
+        <div id="login-form-container">
+            <h2>Login</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" required />
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" required />
+                </div>
+                <button type="submit">Login</button>
+                <p id="login-error-message" class="error-message"></p>
+            </form>
+        </div>
+
+       <!-- Registration Form -->
+				<div id="register-form-container" class="registerPage">
+				    <h2>Register</h2>
+				    <form id="register-form">
+				        <!-- Input group for name -->
+				        <div class="input-group">
+				            <label for="register-name">Name:</label>
+				            <input type="text" id="register-name" required />
+				        </div>
+				        <!-- Input group for email -->
+				        <div class="input-group">
+				            <label for="register-email">Email:</label>
+				            <input type="email" id="register-email"  />
+				        </div>
+				        <!-- Input group for phone number -->
+				        <div class="input-group">
+				            <label for="register-phone">Phone Number:</label>
+				            <input type="tel" id="register-phone"  />
+				        </div>
+				        <!-- Input group for password -->
+				        <div class="input-group">
+				            <label for="register-password">Password:</label>
+				            <input type="password" id="register-password" required />
+				        </div>
+				        <button type="submit" id="registerButton">Register</button>
+				        <p id="register-error-message" class="error-message"></p>
+				    </form>
+				</div>
+				
+				
+				
+				<!-- Toggle between Login and Register -->
+        <div class="form-toggle">
+					<div id="toggle-login-cont" class="toggle-login-cont">
+						<p>Already Have An Account!</p>
+						<button id="toggle-login" class="toggle-login active">Login</button>
+					</div>
+           <div id="toggle-register-cont" class="toggle-register-cont">
+           	<p>Make An Account Now!</p>
+						<button id="toggle-register" class="toggle-register registerButton">Register</button>
+           </div>
+					 <!-- debug method -->
+					 <div>
+						 <p>Debug Method</p>
+						<button onclick="unlockApp()">Skip</button>
+           </div>
+        </div>
+				
+    	</div>
+		</section>
+
+    <!-- Main application wrapper -->
+    <section id="appWrapper" class="appWrapper">
+        <!-- Header section with navigation -->
+        <header class="nav-header">
+            <!-- Back button, hidden by default -->
+            <!-- ID: backButton -->
+						<div>
+							<button id="navBackButton" class="navBackButton">
+                <i class="fa fa-arrow-left"></i> Back
+            </button>
+						</div>
+            
+            <!-- Page title displayed in header -->
+            <!-- ID: pageTitle -->
+            <h1 id="pageTitle">Frank Web Apps</h1>
+						<!-- User Profile Button -->
+						<div>
+							<button id="navUserProfile" class="navUserProfile">
+                <i class="fa fa-user"></i>
+								<p class="userNameText" id="userNameText"></p>
+            </button>
+						</div>
+						
+        </header>
+
+        <!-- Main content container -->
+        <main id="content" class="page">
+            <!-- Loading screen for individual pages -->
+            <div id="pageLoad" class="loading pageLoad">
+                <!-- Loading text, hidden by default -->
+                <p id="loadingText" style="display: none">Loading content...</p>
+                <!-- Progress bar for page loading -->
+                <!-- ID: pageProgressBar -->
+                <progress id="pageProgressBar" value="0" max="100" style="width: 90%"></progress>
+                <!-- Error text, hidden by default -->
+                <p id="elseText" style="display: none">Error loading content</p>
+            </div>
+
+            <!-- Router view where dynamic content is loaded -->
+            <!-- ID: router-view -->
+            <div id="router-view" class="router-view"></div>
+        </main>
+
+        <!-- Footer with navigation and app drawer -->
+        <footer class="footer">
+            <div class="footer-buttons">
+                <!-- App drawer button -->
+                <!-- ID: appDrawerButton -->
+                <div id="appDrawerButton" class="app-button">
+                    <i class="fa-solid fa-angle-up"></i>
+                </div>
+
+                <!-- Navigation link to home -->
+                <div class="nav-link" data-page="home">
+                    <i class="fa fa-house"></i>
+                </div>
+
+                <!-- Navigation link to settings -->
+                <div class="nav-link" data-page="settings">
+                    <i class="fa fa-cog"></i>
+                </div>
+            </div>
+
+            <!-- App drawer for additional apps -->
+            <!-- ID: appDrawer -->
+            <div id="appDrawer" class="appDrawer">
+                <div class="appsBox">
+                    <!-- Link to video player app -->
+                    <div class="nav-link app" data-page="videoPlayer">
+                        <i class="fa-brands fa-youtube"></i>
+                        <h3>YouTube</h3>
+                    </div>
+
+                    <!-- Link to soundboard app -->
+                    <div class="nav-link app" data-page="soundBoard">
+                        <i class="fa-solid fa-chess-board"></i>
+                        <h3>Sound Board</h3>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+    <!-- Main JavaScript file for app functionality -->
+    <script src="src/scripts/main.js" type="module"></script>
+
+    
+<!--  		 <script src="https://rickgomez223.netlify.app/debugTools/toolbox.js" type="module" defer></script>  -->
+	
+</body>
+
+</html>

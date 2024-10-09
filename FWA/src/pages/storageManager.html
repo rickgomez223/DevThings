@@ -1,0 +1,139 @@
+<!-- Main wrapper for the Storage Manager page -->
+<div class="smWrapper">
+    <!-- Header section of the Storage Manager -->
+    <div id="smW-Header" class="smW-Header">
+        <!-- Main heading for the Storage Manager -->
+        <h1>Storage Manager</h1>
+        
+        <!-- Toggle buttons to switch between Photos and Sounds sections -->
+        <!-- ID: toggleStorage -->
+       <div class="toggleStorage" id="toggleStorage">
+    <div class="storageMenu-item">
+        <!-- Button to display Photos section -->
+        <button id="photosBtn">Photos</button>
+        <span class="icon"><i class="fas fa-chevron-right"></i></span>
+    </div>
+    <div class="storageMenu-item">
+        <!-- Button to display Sounds section -->
+        <button id="soundsBtn">Sounds</button>
+        <span class="icon"><i class="fas fa-chevron-right"></i></span>
+    </div>
+</div>
+    <!-- Main content area of the Storage Manager -->
+    <main class="sm-Page">
+			
+			
+        <!-- Images Page Content -->
+        <div id="sm-imagesPage" class="sm-imagesPage">
+            <!-- Header for the Photo Library -->
+            <div class="iPageHeader">
+                <h3>Photo Library</h3>
+            </div>
+            <!-- Content area for the Photo Library -->
+            <div class="iPageContent">
+                <!-- Display for the count of selected photos -->
+                <!-- ID: selectedCountPhotos -->
+                <div id="selectedCountPhotos">0 Selected</div>
+                <!-- Grid to display photos -->
+                <!-- ID: sm-photoGrid -->
+                <div id="sm-photoGrid" class="sm-photoGrid"></div>
+								
+            </div>
+            <!-- Footer section with actions for the Photo Library -->
+            <!-- ID: photoActions -->
+            <div id="photoActions" class="iPageFooter">
+                <!-- Button to delete selected photos, initially disabled -->
+                <!-- ID: deleteButtonPhotos -->
+                <button id="deleteButtonPhotos" disabled>Delete Selected</button>
+                
+                <!-- Form to upload new photos -->
+                <!-- ID: uploadPhotoForm -->
+                <form id="uploadPhotoForm">
+                    <h3>Upload Image</h3>
+                    <!-- File input for selecting an image to upload -->
+                    <!-- ID: fileInput -->
+                    <input type="file" id="fileInput" accept="image/*">
+                    <!-- Button to submit the upload form -->
+                    <!-- ID: iPageSubmitBtn -->
+                    <button  id="iPageSubmitBtn">Upload</button>
+                </form>
+            </div>
+        </div>
+
+				
+				
+        <!-- Sounds Page Content, initially hidden -->
+        <div id="sm-soundsPage" class="sm-soundsPage" style="display:none;">
+            <!-- Header for the Sounds Library -->
+            <div class="sPageHeader">
+                <h3>Sounds Library</h3>
+            </div>
+            <!-- Content area for the Sounds Library -->
+            <div class="sPageContent">
+                <!-- Display for the count of selected sounds -->
+                <!-- ID: selectedCountSounds -->
+                <div id="selectedCountSounds">0 Selected</div>
+                <!-- Grid to display sounds -->
+                <!-- ID: sm-soundGrid -->
+                <div id="sm-soundGrid"></div>
+            </div>
+            <!-- Footer section with actions for the Sounds Library -->
+            <!-- ID: soundActions -->
+            <div class="sPageFooter" id="soundActions">
+                <!-- Button to delete selected sounds, initially disabled -->
+                <!-- ID: deleteButtonSounds -->
+                <button id="deleteButtonSounds" disabled>Delete Selected</button>
+                
+                <!-- Form to upload new sounds -->
+                <!-- ID: uploadSoundForm -->
+                <form id="uploadSoundForm">
+                    <h3>Upload Sound</h3>
+                    <!-- Input for sound title -->
+                    <div class="form-group">
+                        <label for="sm-ui-title">Title</label>
+                        <!-- ID: title -->
+                        <input type="text" id="sm-ui-title" placeholder="Enter Title" required>
+                    </div>
+                    <!-- Input for sound subject -->
+                    <div class="form-group">
+                        <label for="sm-ui-subject">Subject</label>
+                        <!-- ID: subject -->
+                        <input type="text" id="sm-ui-subject" placeholder="Enter Subject" required>
+                    </div>
+                    <!-- Buttons for recording sounds -->
+                    <div class="form-group">
+                        <!-- ID: startRecording -->
+                        <button type="button" id="startRecording">Start Recording</button>
+                    </div>
+                    <!-- Container to hold the recorded audio -->
+                    <!-- ID: audioContainer -->
+                    <div id="audioContainer" class="audio-container"></div>
+                    <!-- Button to submit the upload form -->
+                    <!-- ID: sPageSubmitBtn -->
+                    <button id="sPageSubmitBtn">Upload</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+
+ 
+	
+<!-- Scripts for handling the settings page functionality, loaded as modules -->
+<script src="src/scripts/pages/storageManager.js" type="module" defer></script>
+<script src="./src/scripts/pages/storageManager.js" type="module" defer></script>
+<script src="../src/scripts/pages/storageManager.js" type="module" defer></script>
+<script src="../../src/scripts/pages/storageManager.js" type="module" defer></script>
+<script src="../../../src/scripts/pages/storageManager.js" type="module" defer></script>
+<script src="../../../../src/scripts/pages/storageManager.js" type="module" defer></script>
+
+
+<link rel="stylesheet" href="src/styles/storageManager.css" defer/>
+<link rel="stylesheet" href="./src/styles/storageManager.css" defer/>
+<link rel="stylesheet" href="../src/styles/storageManager.css" defer/>
+<link rel="stylesheet" href="../../src/styles/storageManager.css" defer/>
+<link rel="stylesheet" href="../../../src/styles/storageManager.css" defer/>
+<link rel="stylesheet" href="../../../../src/styles/storageManager.css" defer/>
+
+
+

@@ -1,0 +1,102 @@
+.homeContainer {
+    box-sizing: border-box;
+    text-align: center;
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Soft outer shadow */
+    height: auto;
+    width: 100%;
+    margin: auto;
+    padding: 20px; /* Add some padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: auto;
+    
+    border-radius: 15px; /* Rounded corners */
+}
+
+.homeHeader {
+    /* Additional styles can go here */
+}
+
+.homeContent {
+    /* Additional styles can go here */
+}
+
+.homeContentLoading {
+		height: 100%;
+		position: relative;
+  	display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+		
+		margin: auto;
+		text-align: center;
+}
+.homeContentLoadingText {
+	size: 14pt;
+	
+}
+.homeContentLoadingProgressBar {
+    width: 100%;
+    height: 20px;
+    margin-top: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+}
+
+.homeContentLoadingProgressBar::-webkit-progress-bar {
+    background-color: #f3f3f3;
+    border-radius: 5px;
+}
+
+.homeContentLoadingProgressBar::-webkit-progress-value {
+    background-color: #4caf50;
+    border-radius: 5px;
+}
+
+.homeContentLoadingProgressBar::-moz-progress-bar {
+    background-color: #4caf50;
+    border-radius: 5px;
+}
+
+.homeContentPhotoBox {
+    display: none;
+}
+
+.homeContentPhotoBoxGallery {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.homeContentPhotoBoxGallery img {
+    aspect-ratio: 3 / 4;
+    width: 100%;
+    height: auto; /* Ensures images scale proportionally */
+    object-fit: cover; /* Ensures the image covers the entire area if necessary */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.homeContentPhotoViewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    cursor: pointer;
+}
+
+.homeContentPhotoViewer img {
+    max-width: 100%;
+    max-height: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}

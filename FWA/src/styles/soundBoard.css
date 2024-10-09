@@ -1,0 +1,110 @@
+/* Container for the soundboard */
+.boxSB {
+    box-sizing: border-box;
+    text-align: center;
+    border: 1px solid #ccc; /* Subtle border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft outer shadow */
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    padding: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 15px; /* Rounded corners */
+		
+		-webkit-user-select: none; /* Disable text selection */
+    -webkit-touch-callout: none; /* Disable text callout (copy/paste) */
+    user-select: none; /* Standard for other browsers */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
+    outline: none; /* Remove focus outline */
+    -webkit-appearance: none; /* Remove default button appearance */
+    -moz-appearance: none; /* Remove Firefox default button appearance */
+    appearance: none; /* Remove standard button appearance */
+}
+
+/* Navigation bar */
+.navBar {
+    width: 100%;
+    height: 8em;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    white-space: nowrap; /* Prevent wrapping of buttons */
+    justify-content: flex-start; /* Align items to start for better scroll behavior */
+    align-items: center;
+    
+    padding: 10px auto;
+    margin: auto;
+    overflow: auto;
+    z-index: 100;
+    background-color: #ffecb3; /* Softer yellow background */
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Soft outer shadow */
+}
+
+.navBar button {
+    height: 100%;
+    min-width: auto;
+		max-width: 200px;
+    background: #ffb74d; /* Slightly darker orange background */
+    border: none;
+    border-radius: 15px;
+    color: #fff; /* White text for better contrast */
+    font-size: 1rem;
+    padding: 10px 20px; /* Padding for better button size */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for buttons */
+}
+
+.navBar button:hover {
+    background-color: #ffa726; /* Darker orange on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+.navBar:active {
+	
+	border: 1px solid #999;
+}
+/* Soundboard grid layout */
+.soundBoard {
+    max-width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+    grid-gap: 15px; /* Increased gap for better spacing */
+    
+    border-radius: 20px; /* More rounded corners */
+    background-color: #e0f7fa; /* Light cyan background */
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer inner shadow */
+}
+
+/* Individual sound buttons */
+.sound-button {
+	height: 6em;
+	width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4dd0e1; /* Brighter cyan for buttons */
+    color: #004d40; /* Dark teal text for contrast */
+    border: none;
+    border-radius: 15px; /* Rounded corners */
+    font-size: 18px; /* Larger font size */
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for buttons */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+    padding: 15px; /* Increased padding for a better click area */
+}
+
+.sound-button:hover {
+    background-color: #26c6da; /* Darker cyan on hover */
+    transform: scale(1.05); /* Slight scaling effect on hover */
+}
+
+.sound-button:active {
+    background-color: #00acc1; /* Even darker cyan on active */
+    transform: scale(1); /* Reset scale on click */
+}

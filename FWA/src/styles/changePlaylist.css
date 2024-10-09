@@ -1,0 +1,93 @@
+
+#playlistManager {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    color: #333;
+}
+
+#playlistChange {
+    margin-bottom: 20px;
+}
+
+#playlistChange label, #playlistChange input, #playlistChange button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#playlistChange input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#playlistChange button {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#playlistChange button:hover {
+    background-color: #218838;
+}
+
+#storedPlaylists ul {
+    list-style: none;
+    padding: 0;
+}
+
+#storedPlaylists li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+#storedPlaylists li span {
+    flex-grow: 1;
+}
+
+.selectBtn, .deleteBtn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.selectBtn {
+    background-color: #007bff;
+    color: white;
+    margin-right: 5px;
+}
+
+.selectBtn:hover {
+    background-color: #0056b3;
+}
+
+.deleteBtn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.deleteBtn:hover {
+    background-color: #c82333;
+}
+
+#currentPlaylist p {
+    font-weight: bold;
+    color: #333;
+}

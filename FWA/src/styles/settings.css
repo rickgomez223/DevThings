@@ -1,0 +1,287 @@
+.pageContainer {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f7;
+    color: #000;
+		height: 100%;
+		overflow: auto;
+}
+
+.pageHeader {
+    background-color: #f9f9f9;
+    padding: 15px;
+    text-align: center;
+    border-bottom: 2px solid #ccc;
+}
+
+.pageHeader h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.pageBody {
+    margin: 20px auto;
+}
+
+.settingsNav {
+	display: none;
+	position: sticky;
+	top: 0;
+}
+
+
+.settingsRouter {
+	background-color: #fff;
+	display: none;
+	overflow: auto;
+}
+
+
+.settingsNav, .settingsPanel {
+    background-color: #fff;
+    border-top: 2px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    font-size: 17px;
+    border-bottom: 1px solid #ccc;
+    height: 45px;
+		width: 100%;
+}
+.status-item span {
+	
+    flex-grow: 1;
+}
+.status-item i {
+	width: 100%;
+	
+	display: flex;
+	justify-content: flex-end;
+	
+}
+.status-item p {
+	
+	margin-left: auto;
+}
+
+.settings-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    font-size: 17px;
+    border-bottom: 2px solid #ccc;
+    height: 45px;
+}
+
+.settings-item:last-child {
+    border-bottom: 1.5px solid #ccc;
+}
+
+.settings-item span {
+    flex-grow: 1;
+}
+
+.settings-item button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    width: 100%;
+		height: 100%;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.settings-item button:focus {
+    outline: none;
+}
+
+
+.settings-item i {
+    margin-left: 10px;
+}
+.actionButtons {
+    padding: 15px;
+    font-size: 17px;
+    border-bottom: 2px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 45px;
+    background-color: white;
+}
+
+
+
+.appStatus {
+    background-color: #fff;
+    padding: 15px;
+    margin: 20px;
+    border: 1px solid #ccc;
+}
+
+.appStatus h3 {
+    margin: 0 0 10px;
+}
+
+.appStatus p {
+    margin: 5px 0;
+}
+
+.pagefooter {
+    background-color: #f9f9f9;
+    
+    border-top: 1px solid #ccc;
+}
+
+.appDetailsCont {
+    text-align: center;
+}
+
+.appDetailsCont button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    width: 100%;
+		height: 100%;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.appDetailsCont button:hover {
+    outline: none;
+}
+.attributes {
+    display: flex;          /* Enables Flexbox */
+    justify-content: space-around;  /* Spaces them evenly across the width */
+    align-items: flex-start; /* Aligns items at the top */
+    text-align: center;
+    width: 100%;            /* Ensure it takes up the full width */
+    padding: 10px;          /* Optional: Adds a bit of spacing around the container */
+}
+
+.attributes .me, 
+.attributes .attr {
+    flex: 1;                /* Ensures both divs take up equal space */
+    padding: 10px; 		/* Optional: Adds padding within each section */
+		text-align: center;
+}
+
+.attributes ul {
+    list-style-type: none;
+}
+
+.attributes ul li {
+    margin: 5px 0;
+		text-align: center;
+}
+
+.attributes h3 {
+    margin-top: 5px;
+    font-size: 18px;
+		text-align: center;
+}
+
+.attributes i {
+    font-style: italic;
+		text-align: center;
+}
+
+.icon {
+    font-size: 20px;
+    color: #c7c7cc;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.appStatus i {
+    margin-right: 5px;
+}
+	/* Define initial hidden state */
+.hidden {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    display: none;
+}
+
+/* Define the visible state */
+.visible {
+    max-height: 100vh; /* Adjust this to fit the content */
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    display: flex;
+}
+
+
+.footer-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    font-size: 17px;
+    border-bottom: 2px solid #ccc;
+    height: 45px;
+}
+
+.footer-item:last-child {
+    border-bottom: 2px solid #ccc;
+}
+
+.footer-item span {
+    flex-grow: 1;
+}
+
+.footer-item button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    width: 100%;
+		height: 100%;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-item button:focus {
+    outline: none;
+}
+
+
+.footer-item i {
+    margin-left: 10px;
+}
