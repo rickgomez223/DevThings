@@ -1,27 +1,9 @@
 
-async function loadFirebase2() {
-  try {
-    // Try loading from the first source
-    const firebaseModule =  await import('https://cdn-rickgomez223.web.app/firebase/firebaseConfig.js');
-    return firebaseModule;
-  } catch (error) {
-		console.error('Failed to load from first source...', error);
-    // console.error('Failed to load from first source, trying the second source...', error);
-    // try {
-    //   // Try loading from the second source if the first fails
-    //   const firebaseModule = await import('');
-    //   return firebaseModule;
-    // } catch (error) {
-    //   console.error('Both sources failed to load.', error);
-    //   throw new Error('Failed to load Firebase configuration from both sources');
-    // }
-  }
-}
 
 async function loadFirebase() {
   try {
     // Try loading from the first source
-    const firebaseModule = await import('https://cdn-rickgomez223.web.app/firebase/firebaseConfig.js');
+    const firebaseModule = await import('https://cdn.devthings.pro/firebase/firebaseConfig.js');
     return firebaseModule;
   } catch (error) {
     console.error('Failed to load from the first source:', error);
