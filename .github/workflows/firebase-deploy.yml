@@ -23,4 +23,4 @@ jobs:
       - name: Deploy to Firebase
         env:
           FIREBASE_TOKEN: ${{ secrets.Firebase_Token }}
-        run: firebase deploy --project your-project-id
+        run: firebase deploy --project rickgomez223
