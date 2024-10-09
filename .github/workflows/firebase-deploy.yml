@@ -23,7 +23,7 @@ jobs:
 
       - name: Authenticate with Firebase using Service Account
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FirebaseAdmin }}
         run: |
           echo $GOOGLE_APPLICATION_CREDENTIALS > ~/firebase_key.json
           export GOOGLE_APPLICATION_CREDENTIALS=~/firebase_key.json
