@@ -51,7 +51,7 @@
       ]
     },
     {
-      "site": "franks-web-apps",
+      "site": "devthings-fwa",
       "public": "FWA",
       "ignore": [
         "firebase.json",
