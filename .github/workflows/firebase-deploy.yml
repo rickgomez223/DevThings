@@ -19,19 +19,19 @@ jobs:
           node-version: '18.x'
 
       - name: Install Firebase CLI (Stable version)
-        run: npm install -g firebase-tools@12.x  
-      
+        run: npm install -g firebase-tools@12.x  # Pin to the 12.x version for stability
+
+      # Set up the Service Account for Firebase Authentication
       - name: Authenticate with Firebase using Service Account
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASEADMIN }}
+          FIREBASE_CREDENTIALS: ${{ secrets.FIREBASEADMIN }}  # The secret for your service account
         run: |
-          echo $GOOGLE_APPLICATION_CREDENTIALS > ~/firebase_key.json
-          export GOOGLE_APPLICATION_CREDENTIALS=~/firebase_key.json
+          echo "$FIREBASE_CREDENTIALS" > $HOME/firebase_key.json
+          export GOOGLE_APPLICATION_CREDENTIALS=$HOME/firebase_key.json
 
-      
-
+      # Optional - Verify Firebase Authentication
       - name: Verify Firebase Authentication
-        run: firebase projects:list --project rickgomez223
-  
+        run: firebase projects:list
+
       - name: Deploy to Firebase
         run: firebase deploy --project rickgomez223
