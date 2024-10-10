@@ -1,10 +1,10 @@
-modules = ["web", "nodejs-20"]
-run = 'bash deploy.sh'
+modules = ["web", "nodejs-20", "bash", "nix"]
+run = "node index.js"
 [nix]
 channel = "stable-24_05"
 
 [deployment]
-run = ["sh", "-c", "run start"]
+run = ["sh", "-c", "node index.js"]
 
 [[ports]]
 localPort = 5000
