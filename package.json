@@ -1,5 +1,5 @@
 {
-  "name": "workspace",
+  "name": "devthings_site",
   "version": "1.0.0",
   "main": "/",
   "dependencies": {
@@ -80,7 +80,7 @@
     "firebase": "^10.14.0"
   },
   "scripts": {
-    "postinstall": "npm install -g firebase-tools && firebase login:ci --token $FIREBASE_TOKEN",
+    "postinstall": "npm install -g firebase-tools && firebase login:ci 4/0AVG7fiQ65Tc1tmA7_Mh0VmBATk2-KYzwGk4wxq7aLJVYsMPTH9wvXI8BWWNvZrAlyUAW0w",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "lintfix": "npm run lint -- --fix"

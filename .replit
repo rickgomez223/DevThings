@@ -1,10 +1,10 @@
-modules = ["web", "nodejs-20", "bash", "nix"]
+modules = ["web", "nodejs-18", "bash"]
 run = "firebase deploy"
 [nix]
 channel = "stable-24_05"
 
 [deployment]
-run = ["sh", "-c", "bash deploy.sh"]
+run = ["sh", "-c", "firebase deploy"]
 
 [[ports]]
 localPort = 5000
