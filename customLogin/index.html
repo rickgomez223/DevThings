@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Login</title>
+  <style>
+    /* Basic resets */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .login-box {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    button#google-signin-btn {
+      background-color: #4285F4;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    button#google-signin-btn img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    button#google-signin-btn span {
+      font-size: 1rem;
+    }
+
+    button#google-signin-btn:hover {
+      background-color: #357ae8;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .login-box {
+        width: 80%;
+      }
+
+      h1 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+  <!-- Firebase JS SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAtTnLj0NRnF8mu8zkaPv9pGJjDQF44_6I",
+      authDomain: "rickgomez223.firebaseapp.com",
+      databaseURL: "https://rickgomez223-default-rtdb.firebaseio.com",
+      projectId: "rickgomez223",
+      storageBucket: "rickgomez223.appspot.com",
+      messagingSenderId: "417545171709",
+      appId: "1:417545171709:web:736a61acabab07bee04494"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    document.getElementById('google-signin-btn').addEventListener('click', () => {
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          // Handle successful login
+          console.log("User signed in: ", result.user);
+          // Optionally redirect or display protected content
+        })
+        .catch((error) => {
+          console.error("Error during login: ", error);
+        });
+    });
+  </script>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <h1>Sign in to Company Apps</h1>
+      <button id="google-signin-btn">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png" alt="Google Logo">
+        <span>Sign in with Google</span>
+      </button>
+    </div>
+  </div>
+</body>
+</html>
