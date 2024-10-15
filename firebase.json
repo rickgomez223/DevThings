@@ -58,6 +58,15 @@
         "**/.*",
         "**/node_modules/**"
       ]
+    },
+    {
+      "site": "login-devthings",
+      "public": "customLogin",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
     }
   ],
   "storage": {
