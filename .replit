@@ -8,12 +8,13 @@ run = ["sh", "-c", "firebase deploy"]
 
 [[ports]]
 localPort = 5000
-externalPort = 3002
-exposeLocalhost = true
 
 [[ports]]
 localPort = 5001
-externalPort = 8008
+
+[[ports]]
+localPort = 5007
+externalPort = 4200
 exposeLocalhost = true
 
 [[ports]]
