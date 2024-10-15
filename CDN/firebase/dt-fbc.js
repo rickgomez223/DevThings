@@ -33,12 +33,7 @@ const firestore = getFirestore(app);
 console.log('Firebase services initialized, Exporting Services');
 // Export services and their related functions
 export {
-  app,
-  auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, updateProfile, signInWithPopup, GoogleAuthProvider, 
-  database, databaseRef, set, onValue, get, remove, update,
-  storage, storageRef, uploadBytesResumable, getDownloadURL, listAll, deleteObject,
-  analytics, logEvent,
-  firestore, doc, getDoc, setDoc
+  app, auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, updateProfile, signInWithPopup, GoogleAuthProvider, database, databaseRef, set, onValue, get, remove, update, storage, storageRef, uploadBytesResumable, getDownloadURL, listAll, deleteObject, analytics, logEvent, firestore, doc, getDoc, setDoc
 };
 
 console.log('Firebase Is Ready');
