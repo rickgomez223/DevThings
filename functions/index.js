@@ -24,7 +24,7 @@ const nodemailer = require('nodemailer');
 // Replace these with your GitHub info
 const GITHUB_USERNAME = 'rickgomez223';
 const GITHUB_REPO = 'DevThings';
-const GITHUB_TOKEN = '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';
+const GITHUB_TOKEN = process.env['GitHub_Key'];
 const EMAIL_RECIPIENT = 'kyle@mail.devthings.pro'; // Your email for backup
 
 // Setup Nodemailer for email
