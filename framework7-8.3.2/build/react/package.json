@@ -1,6 +1,0 @@
-{
-  "name": "framework7-react",
-  "private": true,
-  "module": "framework7-react.js",
-  "typings": "framework7-react.d.ts"
-}
